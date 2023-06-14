@@ -1,51 +1,90 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import './login.css'
+
 //antd
+// btw antd pela hju ama validation n all muki de
+
 const Login = () => {
+    const [alert1, setAlert1] = useState('')
+
     return (
         <>
-            <h1>Login Screen</h1>
-            <html>
-    <head>
-        <title> Login Form </title>
-        <link rel="stylesheet" type="text/css" href="login.css" />
-    </head>
-    <body>
-        <form class="form">
-            <fieldset>
-            <h2 style="text-align: center; font-size: 40px; color: blue;">Login</h2>
-            <p>
-            <label>Username:</label>
-            <input type="text" id="uname" autocomplete="off" placeholder="Please enter your name"
-            onkeyup="white(this.value)" />
-            </p>   
-            <p> 
-            <label>Password:</label>
-            <input type="password" class="psd" autocomplete="off" placeholder="Please enter password"
-            onkeyup="passCheck(this.value)" />
-            </p>
-            <p>
-            <label>Confirm Password:</label>
-            <input type="password" class="conpsd" autocomplete="off" placeholder="Please confirm your password" />
-            <div>
-                <laber class="password_check">1 UPPERCASE Charachter</laber>
-                <label class="password_check">1 Special Charachter</label>
-                <label class="password_check">1 Numerical Charachter</label>
-            <div class="showpsd">
-                <button style="width: 200px;" type="button" 
-                onclick="show(this.value)">Show Password</button>
-            </div>
-            </div>
-            </p>
-            <button type="submit" id="submit">Login</button>
-            <button type="reset" id="reset">Reset</button>
-            <p>
-                <error id="alert1" style="font-size: 20px; color: red; font-weight: 900;"></error>
-                <error id="alert2" style="font-size: 20px; color: red; font-weight: 900;"></error>
+            {/* bro for gods sake its react.... */}
 
-            </p>
-        </fieldset>
-        </form>
-    </body>
+            <form className='form'>
+                <fieldset>
+                    <h2
+                        style={{
+                            // 'text-align: center; font-size: 40px; color: blue;'
+                            textAlign: 'center',
+                            fontSize: '40px',
+                            color: 'blue',
+                        }}
+                    >
+                        Login
+                    </h2>
+                    <p>
+                        <label>Username:</label>
+                        <input type='text' id='uname' autoComplete='off' placeholder='Please enter your name' />
+                    </p>
+                    <p>
+                        <label>Password:</label>
+                        <input
+                            type='password'
+                            className='psd'
+                            autoComplete='off'
+                            placeholder='Please enter password'
+                            onkeyup='passCheck(this.value)'
+                        />
+                    </p>
+                    <p>
+                        <label>Confirm Password:</label>
+                        <input
+                            type='password'
+                            className='conpsd'
+                            autocomplete='off'
+                            placeholder='Please confirm your password'
+                        />
+                        <div>
+                            <laber className='password_check'>1 UPPERCASE Charachter</laber>
+                            <label className='password_check'>1 Special Charachter</label>
+                            <label className='password_check'>1 Numerical Charachter</label>
+                            <div className='showpsd'>
+                                <button
+                                    style={{ width: '200px' }}
+                                    type='button'
+                                    onClick={(x) => {
+                                        var password = document.getElementsByClassName('psd')
+                                        var y = password.getAttribute('type')
+                                        if (y == 'password') {
+                                            password.setAttribute('type', 'text')
+                                            x.innerText = 'Hide Password'
+                                        } else {
+                                            password.setAttribute('type', 'password')
+                                            x.innerText = 'Show Password'
+                                        }
+                                    }}
+                                >
+                                    Show Password
+                                </button>
+                            </div>
+                        </div>
+                    </p>
+                    <button type='submit' id='submit'>
+                        Login
+                    </button>
+                    <button type='reset' id='reset'>
+                        Reset
+                    </button>
+                    <p>
+                        <error style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}>{alert1}</error>
+                        {/* ha have aam j bija func convert kar ok bye  tata  aa khbr padi????? */}
+                        <error id='alert2' style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}></error>
+                    </p>
+                </fieldset>
+            </form>
+            {/* </body>
     <script>
         var pattern = /\s/g;
         var a1 = document.getElementById('alert1');
@@ -102,8 +141,7 @@ const Login = () => {
                 x.innerText = "Show Password";
             }
         }
-    </script>
-</html>
+    </script> */}
         </>
     )
 }
