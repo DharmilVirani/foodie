@@ -3,20 +3,16 @@ import React, { useState } from 'react'
 import './login.css'
 
 //antd
-// btw antd pela hju ama validation n all muki de
 
 const Login = () => {
     const [alert1, setAlert1] = useState('')
 
     return (
         <>
-            {/* bro for gods sake its react.... */}
-
             <form className='form'>
                 <fieldset>
                     <h2
                         style={{
-                            // 'text-align: center; font-size: 40px; color: blue;'
                             textAlign: 'center',
                             fontSize: '40px',
                             color: 'blue',
@@ -47,7 +43,7 @@ const Login = () => {
                             placeholder='Please confirm your password'
                         />
                         <div>
-                            <laber className='password_check'>1 UPPERCASE Charachter</laber>
+                            <label className='password_check'>1 UPPERCASE Charachter</label>
                             <label className='password_check'>1 Special Charachter</label>
                             <label className='password_check'>1 Numerical Charachter</label>
                             <div className='showpsd'>
@@ -57,7 +53,7 @@ const Login = () => {
                                     onClick={(x) => {
                                         var password = document.getElementsByClassName('psd')
                                         var y = password.getAttribute('type')
-                                        if (y == 'password') {
+                                        if (y === 'password') {
                                             password.setAttribute('type', 'text')
                                             x.innerText = 'Hide Password'
                                         } else {
@@ -79,7 +75,7 @@ const Login = () => {
                     </button>
                     <p>
                         <error style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}>{alert1}</error>
-                        {/* ha have aam j bija func convert kar ok bye  tata  aa khbr padi????? */}
+
                         <error id='alert2' style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}></error>
                     </p>
                 </fieldset>
