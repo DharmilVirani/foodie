@@ -10,12 +10,12 @@ const Signup = () => {
     return (
         <>
             <form className='form'>
-                <fieldset style={{ border: '2px blue solid', padding: '10px' }}>
+                <fieldset style={{ border: '2px black solid', padding: '10px' }}>
                     <h2
                         style={{
                             textAlign: 'center',
                             fontSize: '40px',
-                            color: 'blue',
+                            color: 'black',
                         }}
                     >
                         <u>

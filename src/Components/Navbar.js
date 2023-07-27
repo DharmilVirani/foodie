@@ -38,12 +38,22 @@ export default function Navbar(props) {
                             </form>
                             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                                 <li className='nav-item'>
-                                    <Link className='nav-a ' aria-current='page' to='/login'>
+                                    <Link
+                                        style={{ textDecoration: 'none', color: 'black' }}
+                                        className='nav-a '
+                                        aria-current='page'
+                                        to='/login'
+                                    >
                                         {props.loginText}
                                     </Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-a' to='/signup'>
+                                    <Link
+                                        style={{ textDecoration: 'none', color: 'black' }}
+                                        className='nav-a'
+                                        aria-current='page'
+                                        to='/signup'
+                                    >
                                         {props.signinText}
                                     </Link>
                                 </li>
