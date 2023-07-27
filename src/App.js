@@ -15,15 +15,29 @@ const store = configureStore()
 function App() {
     return (
         <>
-            <Navbar
-                title=<b style={{ fontFamily: 'Amita', fontSize: 40, marginLeft: 100 }}>
-                    <i>foodie</i>
-                </b>
-                loginText=<b style={{ fontFamily: 'Garamond', fontSize: 25, marginLeft: 150, opacity: 0.7 }}>Log in</b>
-                signinText=<b style={{ fontFamily: 'Garamond', fontSize: 25, marginLeft: 60, opacity: 0.7 }}>Sign Up</b>
-            />
             <Provider store={store}>
                 <BrowserRouter>
+                    <Navbar
+                        title=<b style={{ fontFamily: 'Amita', fontSize: 40, marginLeft: '30%' }}>
+                            <i>foodie</i>
+                        </b>
+                        loginText=<b style={{ fontFamily: 'Garamond', fontSize: 25, marginLeft: 100, opacity: 0.7 }}>
+                            Log in
+                        </b>
+                        signinText=<b style={{ fontFamily: 'Garamond', fontSize: 25, marginLeft: 60, opacity: 0.7 }}>
+                            Sign Up
+                        </b>
+                        homeText=<b
+                            style={{
+                                fontFamily: 'Garamond',
+                                fontSize: 25,
+                                marginLeft: '60%',
+                                opacity: 0.7,
+                            }}
+                        >
+                            Home
+                        </b>
+                    />
                     <Switch>
                         <Route exact path='/signup' component={Signup} />
                         <Route exact path='/' component={Home} />
