@@ -4,13 +4,13 @@ import './login.css'
 
 //antd
 
-const Login = () => {
+const Signup = () => {
     const [alert1, setAlert1] = useState('')
 
     return (
         <>
             <form className='form'>
-                <fieldset>
+                <fieldset style={{ border: '2px blue solid', padding: '10px' }}>
                     <h2
                         style={{
                             textAlign: 'center',
@@ -18,7 +18,9 @@ const Login = () => {
                             color: 'blue',
                         }}
                     >
-                        Login
+                        <u>
+                            <b> Sign Up </b>
+                        </u>
                     </h2>
                     <p>
                         <label>Username:</label>
@@ -68,7 +70,7 @@ const Login = () => {
                         </div>
                     </p>
                     <button type='submit' id='submit'>
-                        Login
+                        Sign Up
                     </button>
                     <button type='reset' id='reset'>
                         Reset
@@ -142,4 +144,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

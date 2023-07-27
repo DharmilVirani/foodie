@@ -38,13 +38,13 @@ export default function Navbar(props) {
                             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                                 <li className='nav-item'>
                                     <Link className='nav-link ' aria-current='page' to='/login'>
-                                        {props.homeText}
+                                        {props.loginText}
                                     </Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-link' to='/signup'>
-                                        {props.aboutText}
-                                    </Link>
+                                    <a className='nav-link' href='/signup'>
+                                        {props.signinText}
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -57,7 +57,7 @@ export default function Navbar(props) {
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string.isRequired,
-    homeText: PropTypes.string.isRequired,
+    signinText: PropTypes.string.isRequired,
+    loginText: PropTypes.string.isRequired,
 }
-Navbar.defaultProps = { title: 'Set Title Here', aboutText: 'About', homeText: 'Home' }
+Navbar.defaultProps = { title: 'Set Title Here', signinText: 'signin', loginText: 'login' }
