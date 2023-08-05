@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
-import './login.css'
+import { Link } from 'react-router-dom'
 
 //antd
 
 const Signup = () => {
     const [alert1, setAlert1] = useState('')
 
+    const [showpsd, setShowpsd] = useState('password')
+
+    const myFunction = (e) => {
+        if (e.target.checked === true) {
+            setShowpsd('text')
+        } else {
+            setShowpsd('password')
+        }
+    }
+
     return (
         <>
             <form className='form'>
-                <fieldset style={{ border: '2px black solid', padding: '10px' }}>
+                <fieldset style={{ border: '2px black solid', padding: '10px', width: '600px' }}>
                     <h2
                         style={{
                             textAlign: 'center',
@@ -28,7 +38,7 @@ const Signup = () => {
                     <p>
                         <label>Password:</label>
                         <input
-                            type='password'
+                            type={showpsd}
                             className='psd'
                             autoComplete='off'
                             placeholder='Please enter password'
@@ -38,34 +48,26 @@ const Signup = () => {
                     <p>
                         <label>Confirm Password:</label>
                         <input
-                            type='password'
-                            className='conpsd'
+                            type={showpsd}
+                            className='psd'
                             autocomplete='off'
                             placeholder='Please confirm your password'
                         />
+                        <input type='checkbox' onChange={myFunction} />
+                        &nbsp; Show Password
                         <div>
                             <label className='password_check'>1 UPPERCASE Charachter</label>
                             <label className='password_check'>1 Special Charachter</label>
                             <label className='password_check'>1 Numerical Charachter</label>
-                            <div className='showpsd'>
-                                <button
-                                    style={{ width: '200px' }}
-                                    type='button'
-                                    onClick={(x) => {
-                                        var password = document.getElementsByClassName('psd')
-                                        var y = password.getAttribute('type')
-                                        if (y === 'password') {
-                                            password.setAttribute('type', 'text')
-                                            x.innerText = 'Hide Password'
-                                        } else {
-                                            password.setAttribute('type', 'password')
-                                            x.innerText = 'Show Password'
-                                        }
-                                    }}
-                                >
-                                    Show Password
-                                </button>
-                            </div>
+                            Don't want to create account? Explore our&nbsp;
+                            <Link to='./' style={{ textDecoration: 'none', color: 'orange' }}>
+                                Home
+                            </Link>
+                            <br />
+                            Already have an account?&nbsp;
+                            <Link to='./login' style={{ textDecoration: 'none', color: 'green' }}>
+                                Login
+                            </Link>
                         </div>
                     </p>
                     <button type='submit' id='submit'>

@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 // import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min'
-export default function Navbar(props) {
+function Navbar(props) {
+    const route = props?.history?.location?.pathname || window.location.pathname
+    const noNavPage = ['/signup', '/login']
+
+    if (noNavPage.includes(route)) return null
+
     return (
         <>
-            <div>
+            <div style={{ backgroundColor: 'orange' }}>
                 <nav class='navbar navbar-expand-lg'>
                     <div className='container-fluid'>
                         <span className='navbar-brand'>{props.title}</span>
@@ -32,7 +38,7 @@ export default function Navbar(props) {
                                     aria-label='Search'
                                     style={{ border: '1 px', borderColor: 'black', width: 450, marginLeft: 95 }}
                                 />
-                                <button className='btn btn-outline-success' type='submit'>
+                                <button className='btn btn-outline-light' type='submit'>
                                     Search
                                 </button>
                             </form>
@@ -65,6 +71,8 @@ export default function Navbar(props) {
         </>
     )
 }
+
+export default withRouter(Navbar)
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,

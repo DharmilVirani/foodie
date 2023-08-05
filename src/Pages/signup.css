@@ -1,14 +1,16 @@
 .form {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: auto;
+    width: auto;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 #uname {
     width: 100%;
 }
 .psd {
+    width: 100%;
+}
+.conpsd {
     width: 100%;
 }
 #submit {

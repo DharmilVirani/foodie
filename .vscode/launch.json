@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/dharmil/Desktop/ReactProjects/foodie/node_modules/@adobe/css-tools/dist/cjs",
-      "program": "c:/Users/dharmil/Desktop/ReactProjects/foodie/node_modules/@adobe/css-tools/dist/cjs/build/Debug/outDebug",
+      "cwd": "c:/Users/dharmil/Desktop/ReactProjects/foodie",
+      "program": "c:/Users/dharmil/Desktop/ReactProjects/foodie/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
