@@ -4,7 +4,17 @@ import { Link } from 'react-router-dom'
 //antd
 
 const Signup = () => {
-    const [alert1, setAlert1] = useState('')
+    const [input, setInput] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+    })
+
+    const [error, setError] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+    })
 
     const [showpsd, setShowpsd] = useState('password')
 
@@ -14,6 +24,53 @@ const Signup = () => {
         } else {
             setShowpsd('password')
         }
+    }
+
+    const inputChange = (e) => {
+        const { name, value } = e.target
+        setInput((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+        validateInput(e)
+    }
+
+    const validateInput = (e) => {
+        let { name, value } = e.target
+        setError((prev) => {
+            const stateObj = { ...prev, [name]: '' }
+
+            switch (name) {
+                case 'username':
+                    if (!value) {
+                        stateObj[name] = 'Please enter Username.'
+                    }
+                    break
+
+                case 'password':
+                    if (!value) {
+                        stateObj[name] = 'Please enter Password.'
+                    } else if (input.confirmPassword && value !== input.confirmPassword) {
+                        stateObj['confirmPassword'] = 'Password and Confirm Password does not match.'
+                    } else {
+                        stateObj['confirmPassword'] = input.confirmPassword ? '' : error.confirmPassword
+                    }
+                    break
+
+                case 'confirmPassword':
+                    if (!value) {
+                        stateObj[name] = 'Please enter Confirm Password.'
+                    } else if (input.password && value !== input.password) {
+                        stateObj[name] = 'Password and Confirm Password does not match.'
+                    }
+                    break
+
+                default:
+                    break
+            }
+
+            return stateObj
+        })
     }
 
     return (
@@ -33,26 +90,46 @@ const Signup = () => {
                     </h2>
                     <p>
                         <label>Username:</label>
-                        <input type='text' id='uname' autoComplete='off' placeholder='Please enter your name' />
+                        <input
+                            type='text'
+                            id='uname'
+                            autoComplete='off'
+                            placeholder='Username.'
+                            value={input.username}
+                            onChange={inputChange}
+                            onBlur={validateInput}
+                            name='username'
+                        />
+                        {error.username && <span className='err'>{error.username}</span>}
                     </p>
                     <p>
                         <label>Password:</label>
                         <input
                             type={showpsd}
                             className='psd'
+                            value={input.password}
                             autoComplete='off'
-                            placeholder='Please enter password'
+                            placeholder='Password.'
                             onkeyup='passCheck(this.value)'
+                            onChange={inputChange}
+                            onBlur={validateInput}
+                            name='password'
                         />
+                        {error.password && <span className='err'>{error.password}</span>}
                     </p>
                     <p>
                         <label>Confirm Password:</label>
                         <input
                             type={showpsd}
+                            value={input.confirmPassword}
                             className='psd'
                             autocomplete='off'
-                            placeholder='Please confirm your password'
+                            placeholder='Confirm your Password.'
+                            onChange={inputChange}
+                            onBlur={validateInput}
+                            name='confirmPassword'
                         />
+                        {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
                         <input type='checkbox' onChange={myFunction} />
                         &nbsp; Show Password
                         <div>
@@ -76,11 +153,6 @@ const Signup = () => {
                     <button type='reset' id='reset'>
                         Reset
                     </button>
-                    <p>
-                        <error style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}>{alert1}</error>
-
-                        <error id='alert2' style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}></error>
-                    </p>
                 </fieldset>
             </form>
             {/* </body>

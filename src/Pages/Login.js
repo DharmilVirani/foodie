@@ -4,7 +4,15 @@ import { Link } from 'react-router-dom'
 //antd
 
 const Login = () => {
-    const [alert1, setAlert1] = useState('')
+    const [input, setInput] = useState({
+        username: '',
+        password: '',
+    })
+
+    const [error, setError] = useState({
+        username: '',
+        password: '',
+    })
 
     const [showpsd, setShowpsd] = useState('password')
 
@@ -14,6 +22,38 @@ const Login = () => {
         } else {
             setShowpsd('password')
         }
+    }
+    const inputChange = (e) => {
+        const { name, value } = e.target
+        setInput((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+        validateInput(e)
+    }
+
+    const validateInput = (e) => {
+        let { name, value } = e.target
+        setError((prev) => {
+            const stateObj = { ...prev, [name]: '' }
+
+            switch (name) {
+                case 'username':
+                    if (!value) {
+                        stateObj[name] = 'Please Enter Username.'
+                    }
+                    break
+                case 'password':
+                    if (!value) {
+                        stateObj[name] = 'Please Enter Password.'
+                    }
+                    break
+                default:
+                    break
+            }
+
+            return stateObj
+        })
     }
     return (
         <>
@@ -32,7 +72,17 @@ const Login = () => {
                     </h2>
                     <p>
                         <label>Username:</label>
-                        <input type='text' id='uname' autoComplete='off' placeholder='Please enter your name' />
+                        <input
+                            type='text'
+                            id='uname'
+                            autoComplete='off'
+                            placeholder='Username.'
+                            name='username'
+                            value={input.username}
+                            onChange={inputChange}
+                            onBlur={validateInput}
+                        />
+                        {error.username && <span className='err'>{error.username}</span>}
                     </p>
                     <p>
                         <label>Password:</label>
@@ -40,9 +90,14 @@ const Login = () => {
                             type={showpsd}
                             className='psd'
                             autoComplete='off'
-                            placeholder='Please enter password'
+                            placeholder='Password.'
+                            value={input.password}
                             onkeyup='passCheck(this.value)'
+                            name='password'
+                            onChange={inputChange}
+                            onBlur={validateInput}
                         />
+                        {error.password && <span className='err'>{error.password}</span>}
                     </p>
                     <input type='checkbox' onChange={myFunction} />
                     &nbsp; Show Password
@@ -65,11 +120,6 @@ const Login = () => {
                     <button type='reset' id='reset'>
                         Reset
                     </button>
-                    <p>
-                        <error style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}>{alert1}</error>
-
-                        <error id='alert2' style={{ fontSize: '20px', color: 'red', fontWeight: 900 }}></error>
-                    </p>
                 </fieldset>
             </form>
         </>
