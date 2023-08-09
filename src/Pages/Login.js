@@ -76,13 +76,17 @@ const Login = () => {
                             type='text'
                             id='uname'
                             autoComplete='off'
-                            placeholder='Username.'
+                            placeholder='Username...'
                             name='username'
                             value={input.username}
                             onChange={inputChange}
                             onBlur={validateInput}
                         />
-                        {error.username && <span className='err'>{error.username}</span>}
+                        {error.username && (
+                            <span className='err' style={{ color: 'red' }}>
+                                {error.username}
+                            </span>
+                        )}
                     </p>
                     <p>
                         <label>Password:</label>
@@ -90,14 +94,18 @@ const Login = () => {
                             type={showpsd}
                             className='psd'
                             autoComplete='off'
-                            placeholder='Password.'
+                            placeholder='Password...'
                             value={input.password}
                             onkeyup='passCheck(this.value)'
                             name='password'
                             onChange={inputChange}
                             onBlur={validateInput}
                         />
-                        {error.password && <span className='err'>{error.password}</span>}
+                        {error.password && (
+                            <span className='err' style={{ color: 'red' }}>
+                                {error.password}
+                            </span>
+                        )}
                     </p>
                     <input type='checkbox' onChange={myFunction} />
                     &nbsp; Show Password
@@ -114,7 +122,11 @@ const Login = () => {
                             </Link>
                         </div>
                     </p>
-                    <button type='submit' id='submit'>
+                    <button
+                        type='submit'
+                        id='submit'
+                        disabled={!input.username ? true : false && !input.password ? true : false}
+                    >
                         Login
                     </button>
                     <button type='reset' id='reset'>

@@ -94,13 +94,17 @@ const Signup = () => {
                             type='text'
                             id='uname'
                             autoComplete='off'
-                            placeholder='Username.'
+                            placeholder='Username...'
                             value={input.username}
                             onChange={inputChange}
                             onBlur={validateInput}
                             name='username'
                         />
-                        {error.username && <span className='err'>{error.username}</span>}
+                        {error.username && (
+                            <span className='err' style={{ color: 'red' }}>
+                                {error.username}
+                            </span>
+                        )}
                     </p>
                     <p>
                         <label>Password:</label>
@@ -109,13 +113,17 @@ const Signup = () => {
                             className='psd'
                             value={input.password}
                             autoComplete='off'
-                            placeholder='Password.'
+                            placeholder='Password...'
                             onkeyup='passCheck(this.value)'
                             onChange={inputChange}
                             onBlur={validateInput}
                             name='password'
                         />
-                        {error.password && <span className='err'>{error.password}</span>}
+                        {error.password && (
+                            <span className='err' style={{ color: 'red' }}>
+                                {error.password}
+                            </span>
+                        )}
                     </p>
                     <p>
                         <label>Confirm Password:</label>
@@ -124,12 +132,17 @@ const Signup = () => {
                             value={input.confirmPassword}
                             className='psd'
                             autocomplete='off'
-                            placeholder='Confirm your Password.'
+                            placeholder='Confirm your Password...'
                             onChange={inputChange}
                             onBlur={validateInput}
                             name='confirmPassword'
                         />
-                        {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
+                        {error.confirmPassword && (
+                            <span className='err' style={{ color: 'red' }}>
+                                {error.confirmPassword}
+                            </span>
+                        )}
+                        <br />
                         <input type='checkbox' onChange={myFunction} />
                         &nbsp; Show Password
                         <div>
@@ -147,7 +160,21 @@ const Signup = () => {
                             </Link>
                         </div>
                     </p>
-                    <button type='submit' id='submit'>
+                    <button
+                        type='submit'
+                        id='submit'
+                        disabled={
+                            !input.username
+                                ? true
+                                : false && !input.password
+                                ? true
+                                : false && !input.confirmPassword
+                                ? true
+                                : false && input.password === input.confirmPassword
+                                ? false
+                                : true
+                        }
+                    >
                         Sign Up
                     </button>
                     <button type='reset' id='reset'>
