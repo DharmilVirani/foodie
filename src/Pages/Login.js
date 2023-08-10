@@ -96,7 +96,6 @@ const Login = () => {
                             autoComplete='off'
                             placeholder='Password...'
                             value={input.password}
-                            onkeyup='passCheck(this.value)'
                             name='password'
                             onChange={inputChange}
                             onBlur={validateInput}
@@ -109,7 +108,7 @@ const Login = () => {
                     </p>
                     <input type='checkbox' onChange={myFunction} />
                     &nbsp; Show Password
-                    <p>
+                    <>
                         <div>
                             Don't want to create account? Explore our&nbsp;
                             <Link to='./' style={{ textDecoration: 'none', color: 'orange' }}>
@@ -121,11 +120,11 @@ const Login = () => {
                                 Sign Up
                             </Link>
                         </div>
-                    </p>
+                    </>
                     <button
                         type='submit'
                         id='submit'
-                        disabled={!input.username ? true : false && !input.password ? true : false}
+                        disabled={!input.username ? true : false || !input.password ? true : false}
                     >
                         Login
                     </button>

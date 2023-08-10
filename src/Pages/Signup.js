@@ -166,11 +166,11 @@ const Signup = () => {
                         disabled={
                             !input.username
                                 ? true
-                                : false && !input.password
+                                : false || !input.password
                                 ? true
-                                : false && !input.confirmPassword
+                                : false || !input.confirmPassword
                                 ? true
-                                : false && input.password === input.confirmPassword
+                                : false || input.password === input.confirmPassword
                                 ? false
                                 : true
                         }
