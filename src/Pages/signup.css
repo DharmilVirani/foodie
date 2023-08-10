@@ -19,6 +19,7 @@
     background-color: green;
     color: white;
     margin-left: 2%;
+    margin-top: 10%;
 }
 #reset {
     height: 50px;
@@ -26,6 +27,7 @@
     background-color: brown;
     color: white;
     margin-left: 35%;
+    margin-top: 10%;
 }
 .password_check::after {
     content: '';
