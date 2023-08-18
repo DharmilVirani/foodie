@@ -1,0 +1,17 @@
+.navbar-container {
+    background-color: #2a86b9;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.navbar-title {
+    margin-right: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 19px;
+}
