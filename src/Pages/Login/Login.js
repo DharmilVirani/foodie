@@ -1,6 +1,8 @@
-import { Button, Checkbox, Input } from 'antd'
+import { Button, Checkbox } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import InputField from '../../Components/InputField'
 
 const Login = () => {
     const [input, setInput] = useState({
@@ -38,28 +40,27 @@ const Login = () => {
             <div className='login-card-content'>
                 <div className='login-card-title'>Login</div>
                 <div className='login-card-field'>
-                    <label>Username</label>
-                    <Input
-                        status={error.username ? 'error' : undefined}
-                        placeholder='Username'
-                        value={input.username}
-                        onChange={inputChange}
+                    <InputField
                         name='username'
+                        value={input.username}
+                        label='Username'
+                        error={error.username}
+                        placeholder='Username...'
+                        onChange={inputChange}
                         onBlur={validateInput}
                     />
-                    <span className='error-span'>{error.username}</span>
                 </div>
                 <div className='login-card-field'>
-                    <label>Password</label>
-                    <Input.Password
+                    <InputField
                         name='password'
-                        status={error.password ? 'error' : undefined}
-                        placeholder='Password'
                         value={input.password}
+                        label='Password'
+                        error={error.password}
+                        placeholder='Password...'
                         onChange={inputChange}
                         onBlur={validateInput}
+                        type='password'
                     />
-                    <span className='error-span'>{error.password}</span>
                 </div>
                 <div className='login-card-field'>
                     <Checkbox checked={rememberMe} onChange={myFunction}>

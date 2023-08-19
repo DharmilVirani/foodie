@@ -23,16 +23,6 @@
     margin-bottom: 5px;
 }
 
-.login-card-field label {
-    color: #c98505;
-}
-
-.login-card-field .error-span {
-    font-size: 11px;
-    color: red;
-    margin-left: 5px;
-}
-
 .login-card-field a {
     color: #357aff;
     text-decoration: none;

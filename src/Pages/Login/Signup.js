@@ -1,6 +1,8 @@
-import { Button, Checkbox, Input } from 'antd'
+import { Button, Checkbox } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import InputField from '../../Components/InputField'
 
 const Signup = () => {
     const [input, setInput] = useState({
@@ -43,40 +45,39 @@ const Signup = () => {
             <div className='login-card-content'>
                 <div className='login-card-title'>Sign Up</div>
                 <div className='login-card-field'>
-                    <label>Username</label>
-                    <Input
-                        status={error.username ? 'error' : undefined}
-                        placeholder='Username'
-                        value={input.username}
-                        onChange={inputChange}
+                    <InputField
                         name='username'
+                        value={input.username}
+                        label='Username'
+                        error={error.username}
+                        placeholder='Username...'
+                        onChange={inputChange}
                         onBlur={validateInput}
                     />
-                    <span className='error-span'>{error.username}</span>
                 </div>
                 <div className='login-card-field'>
-                    <label>Password</label>
-                    <Input.Password
+                    <InputField
                         name='password'
-                        status={error.password ? 'error' : undefined}
-                        placeholder='Password'
                         value={input.password}
+                        label='Password'
+                        error={error.password}
+                        placeholder='Password...'
                         onChange={inputChange}
                         onBlur={validateInput}
+                        type='password'
                     />
-                    <span className='error-span'>{error.password}</span>
                 </div>
                 <div className='login-card-field'>
-                    <label>Confirm Password</label>
-                    <Input.Password
+                    <InputField
                         name='confirmPassword'
-                        status={error.confirmPassword ? 'error' : undefined}
-                        placeholder='Confirm Password'
                         value={input.confirmPassword}
+                        label='Confirm Password'
+                        error={error.confirmPassword}
+                        placeholder='Confirm Password...'
                         onChange={inputChange}
                         onBlur={validateInput}
+                        type='password'
                     />
-                    <span className='error-span'>{error.confirmPassword}</span>
                 </div>
                 <div className='login-card-field'>
                     <Checkbox checked={rememberMe} onChange={myFunction}>
