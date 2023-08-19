@@ -15,7 +15,7 @@ const InputField = ({
 
     return (
         <div>
-            {label && <label style={{ color: '#c98505' }}>{label}</label>}
+            {label && <label>{label}</label>}
             <Component
                 status={error ? 'error' : undefined}
                 placeholder={placeholder}
