@@ -1,27 +1,85 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { Input } from 'antd'
+import { UnorderedListOutlined } from '@ant-design/icons'
+import { Dropdown } from 'antd'
+
+import InputField from '../InputField'
+import { isUserLoggedIn } from '../../util'
 
 const Navbar = ({ history }) => {
     const route = history?.location?.pathname || window.location.pathname
     const noNavPage = ['/signup', '/login']
 
+    const isLoggedIn = isUserLoggedIn()
+
+    const items = (
+        isLoggedIn
+            ? [
+                  {
+                      label: 'Profile',
+                      key: '2',
+                      onClick: () => {},
+                  },
+                  {
+                      // TODO: other page -> home baki cart
+                      label: 'Cart/Home',
+                      key: '2',
+                      onClick: () => {},
+                  },
+                  {
+                      label: 'Settings',
+                      key: '2',
+                      onClick: () => {},
+                  },
+                  {
+                      label: 'Logout',
+                      key: '1',
+                      onClick: () => {},
+                  },
+              ]
+            : [
+                  {
+                      label: 'Login',
+                      key: '0',
+                      onClick: () => {},
+                  },
+                  {
+                      label: 'Sign Up',
+                      key: '1',
+                      onClick: () => {},
+                  },
+              ]
+    ).map((item) => ({
+        ...item,
+        label: <div onClick={item.onClick}>{item.label}</div>,
+    }))
+
     if (noNavPage.includes(route)) return null
 
-    // TODO: kabhi kabhi navbar nahi aati
-
-    const title = 'Foodie'
+    const title = 'foodie'
 
     return (
         <>
             <div className='navbar-container'>
                 <div className='navbar-left'>
-                    <span className='navbar-title'>{title}</span>
-                    <Input />
+                    <div className='navbar-title'>{title}</div>
+                    <InputField
+                        placeholder='Search for Food, Cuisine and Restaurants'
+                        onSearch={(e) => console.log(e)}
+                        style={{
+                            width: 500,
+                        }}
+                        type='search'
+                    />
                 </div>
-                <div>Dropdown</div>
-                {/* if logged in -> show logout and home, profile,setting
-              if not logged in show login signup */}
+                <Dropdown
+                    menu={{
+                        items,
+                    }}
+                    trigger={['click']}
+                >
+                    <UnorderedListOutlined style={{ color: 'white' }} />
+                </Dropdown>
             </div>
         </>
     )

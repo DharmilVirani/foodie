@@ -3,15 +3,23 @@
     display: flex;
     padding: 10px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-left {
     display: flex;
+    align-items: center;
 }
 
 .navbar-title {
-    margin-right: 10px;
-    color: black;
+    margin-right: 100px;
+    color: white;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 730px) {
+    .navbar-left .ant-input-group-wrapper {
+        display: none;
+    }
 }

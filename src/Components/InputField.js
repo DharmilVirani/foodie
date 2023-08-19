@@ -1,29 +1,16 @@
 import React from 'react'
 import { Input } from 'antd'
 
-const InputField = ({
-    name = '',
-    value = '',
-    label = null,
-    error = false,
-    placeholder = '',
-    onChange = undefined,
-    onBlur = undefined,
-    type,
-}) => {
-    const Component = type === 'password' ? Input.Password : Input
+const InputField = ({ error = false, label = null, type, ...props }) => {
+    const Component = type === 'password' ? Input.Password : type === 'search' ? Input.Search : Input
 
     return (
         <div>
             {label && <label>{label}</label>}
             <Component
                 status={error ? 'error' : undefined}
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-                name={name}
                 style={{ borderColor: error ? '#c98505' : undefined }}
-                onBlur={onBlur}
+                {...props}
             />
             <span
                 style={{
