@@ -34,19 +34,26 @@ const Navbar = ({ history }) => {
                   {
                       label: 'Logout',
                       key: '1',
-                      onClick: () => {},
+                      onClick: () => {
+                          localStorage.removeItem('token')
+                          history.push('/login')
+                      },
                   },
               ]
             : [
                   {
                       label: 'Login',
                       key: '0',
-                      onClick: () => {},
+                      onClick: () => {
+                          history.push('/login')
+                      },
                   },
                   {
                       label: 'Sign Up',
                       key: '1',
-                      onClick: () => {},
+                      onClick: () => {
+                          history.push('/signup')
+                      },
                   },
               ]
     ).map((item) => ({
