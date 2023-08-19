@@ -22,7 +22,7 @@ const InputField = ({
                 value={value}
                 onChange={onChange}
                 name={name}
-                style={{ color: '#c98505', borderColor: error ? '#c98505' : undefined }}
+                style={{ borderColor: error ? '#c98505' : undefined }}
                 onBlur={onBlur}
             />
             <span
