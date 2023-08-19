@@ -85,7 +85,7 @@ const Signup = () => {
                 </div>
                 <div className='login-card-field'>
                     <Button
-                        style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
+                        style={{ width: '100%' }}
                         // TODO:
                         onClick={() => {
                             if (!input.username || !input.password || !input.confirmPassword) return
@@ -97,15 +97,11 @@ const Signup = () => {
                 </div>
                 <div className='login-card-field'>
                     Want to explore ??&nbsp;
-                    <Link to='/' style={{ textDecoration: 'none', color: 'orange' }}>
-                        Home
-                    </Link>
+                    <Link to='/'>Home</Link>
                 </div>
                 <div className='login-card-field'>
                     Already have an account ??&nbsp;
-                    <Link to='/login' style={{ textDecoration: 'none', color: 'blue' }}>
-                        Login
-                    </Link>
+                    <Link to='/login'>Login</Link>
                 </div>
             </div>
         </div>

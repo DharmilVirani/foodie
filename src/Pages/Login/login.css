@@ -15,15 +15,34 @@
 .login-card-title {
     font-size: 40px;
     text-align: center;
+    color: #357aff;
+}
+
+.login-card-field {
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .login-card-field label {
-    margin-top: 15px;
-    margin-bottom: 5px;
+    color: #c98505;
 }
 
 .login-card-field .error-span {
     font-size: 11px;
     color: red;
     margin-left: 5px;
+}
+
+.login-card-field a {
+    color: #357aff;
+    text-decoration: none;
+}
+
+.login-card-field:has(a) {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.login-card-field:has(a):last-child {
+    margin-top: 0;
 }

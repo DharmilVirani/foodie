@@ -68,7 +68,7 @@ const Login = () => {
                 </div>
                 <div className='login-card-field'>
                     <Button
-                        style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
+                        style={{ width: '100%' }}
                         // TODO:
                         onClick={() => {
                             if (!input.username || !input.password) return
@@ -80,15 +80,11 @@ const Login = () => {
                 </div>
                 <div className='login-card-field'>
                     Want to explore ??&nbsp;
-                    <Link to='/' style={{ textDecoration: 'none', color: 'orange' }}>
-                        Home
-                    </Link>
+                    <Link to='/'>Home</Link>
                 </div>
                 <div className='login-card-field'>
                     Don't have an account ??&nbsp;
-                    <Link to='/signup' style={{ textDecoration: 'none', color: 'blue' }}>
-                        Sign Up
-                    </Link>
+                    <Link to='/signup'>Sign Up</Link>
                 </div>
             </div>
         </div>
