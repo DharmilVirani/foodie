@@ -1,10 +1,11 @@
 import { Button, Checkbox } from 'antd'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import InputField from '../../Components/InputField'
 
 const Signup = () => {
+    const history = useHistory()
     const [input, setInput] = useState({
         username: '',
         password: '',
@@ -34,9 +35,11 @@ const Signup = () => {
     const validateInput = (e) => {
         let { name, value } = e.target
         setError({ ...error, [name]: value ? '' : 'Required field' })
-        if (value && name.toLowerCase().includes('password')) {
-            if (input.password !== input.confirmPassword)
-                setError({ ...error, [name]: 'Password and Confirm Password does not match.' })
+        if (value && name.toLowerCase().includes('password') && input.password && input.confirmPassword) {
+            setError({
+                ...error,
+                [name]: input.password !== input.confirmPassword ? 'Password and Confirm Password does not match.' : '',
+            })
         }
     }
 
@@ -87,9 +90,12 @@ const Signup = () => {
                 <div className='login-card-field'>
                     <Button
                         style={{ width: '100%' }}
-                        // TODO:
                         onClick={() => {
-                            if (!input.username || !input.password || !input.confirmPassword) return
+                            if (error.username || error.password || error.confirmPassword) return
+                            localStorage.setItem('token', true)
+                            localStorage.setItem('user', JSON.stringify(input))
+                            localStorage.setItem('rememberMe', rememberMe)
+                            history.push('/')
                         }}
                         type='primary'
                     >

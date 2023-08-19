@@ -1,10 +1,11 @@
 import { Button, Checkbox } from 'antd'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 import InputField from '../../Components/InputField'
 
 const Login = () => {
+    const history = useHistory()
     const [input, setInput] = useState({
         username: '',
         password: '',
@@ -34,6 +35,11 @@ const Login = () => {
         let { name, value } = e.target
         setError({ ...error, [name]: value ? '' : 'Required field' })
     }
+
+    useEffect(() => {
+        const rem = localStorage.getItem('rememberMe')
+        if (JSON.parse(rem)) setInput(JSON.parse(localStorage.getItem('user')))
+    }, [])
 
     return (
         <div className='login-card-container'>
@@ -70,9 +76,12 @@ const Login = () => {
                 <div className='login-card-field'>
                     <Button
                         style={{ width: '100%' }}
-                        // TODO:
                         onClick={() => {
-                            if (!input.username || !input.password) return
+                            if (error.username || error.password) return
+                            localStorage.setItem('token', true)
+                            localStorage.setItem('user', JSON.stringify(input))
+                            localStorage.setItem('rememberMe', rememberMe)
+                            history.push('/')
                         }}
                         type='primary'
                     >
