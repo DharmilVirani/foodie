@@ -37,6 +37,13 @@ const Login = () => {
     }
 
     useEffect(() => {
+        let isAuth = localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))
+        if (isAuth) {
+            history.push('/')
+        }
+    }, [history])
+
+    useEffect(() => {
         const rem = localStorage.getItem('rememberMe')
         if (JSON.parse(rem)) setInput(JSON.parse(localStorage.getItem('user')))
     }, [])

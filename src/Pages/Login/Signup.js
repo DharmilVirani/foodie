@@ -1,5 +1,5 @@
 import { Button, Checkbox } from 'antd'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import InputField from '../../Components/InputField'
@@ -42,6 +42,13 @@ const Signup = () => {
             })
         }
     }
+
+    useEffect(() => {
+        let isAuth = localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))
+        if (isAuth) {
+            history.push('/')
+        }
+    }, [history])
 
     return (
         <div className='login-card-container'>

@@ -15,8 +15,6 @@ import './Components/Navbar/Navbar.css'
 const store = configureStore()
 
 function App() {
-    // TODO: login sign up access only when no token
-
     return (
         <>
             <Provider store={store}>
