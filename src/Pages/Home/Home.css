@@ -1,0 +1,17 @@
+.suggested {
+    font-family: 'cursive';
+    font-size: 40px;
+    margin-left: -30px;
+    margin-bottom: 30px;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.container {
+    margin: 0 !important;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    max-width: calc(100vw - 60px) !important;
+}

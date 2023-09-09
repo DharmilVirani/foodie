@@ -17,13 +17,13 @@ const Navbar = ({ history }) => {
             ? [
                   {
                       label: 'Profile',
-                      key: '2',
+                      key: '4',
                       onClick: () => {},
                   },
                   {
                       // TODO: other page -> home baki cart
                       label: 'Cart/Home',
-                      key: '2',
+                      key: '3',
                       onClick: () => {},
                   },
                   {
@@ -71,7 +71,7 @@ const Navbar = ({ history }) => {
                 <div className='navbar-left'>
                     <div className='navbar-title'>{title}</div>
                     <InputField
-                        placeholder='Search for Food, Cuisine and Restaurants'
+                        placeholder='Search for Food, Cuisine and Restaurants.....'
                         onSearch={(e) => console.log(e)}
                         style={{
                             width: 500,

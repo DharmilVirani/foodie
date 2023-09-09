@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import configureStore from './store/store'
 import Signup from './Pages/Login/Signup'
-import Home from './Pages/Home'
+import Home from './Pages/Home/Home'
 import NotFound from './Pages/NotFound'
 import Navbar from './Components/Navbar/Navbar'
 import Login from './Pages/Login/Login'
 
 import './Pages/Login/login.css'
 import './Components/Navbar/Navbar.css'
+import './Pages/Home/Home.css'
 
 const store = configureStore()
 
