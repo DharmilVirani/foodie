@@ -126,8 +126,8 @@ export const foodTable = [
     {
         foodId: 'f1',
         restaurantId: 'l1b1',
-        ratings: 4,
-        price: 100,
+        ratings: 4.67468364873678,
+        price: 100.48736487,
         url: 'https://img.freepik.com/free-photo/pizza-pizza-filled-with-tomatoes-salami-olives_140725-1200.jpg?w=1060&t=st=1694236480~exp=1694237080~hmac=c705fc4be7db87ac2c812a716d1f64f1564a74aced25f3e1a3bb8e06211bf18c',
     },
     {

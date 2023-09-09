@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Card } from 'antd'
 import { foodDishes, foodTable, restaurants } from '../../Components/Constant'
 
-const { Meta } = Card
-
 const Home = () => {
     const [data, setData] = useState([])
 
@@ -39,7 +37,33 @@ const Home = () => {
                             }}
                             cover={<img alt='example' src={item.url} style={{ width: '100%', height: '250px' }} />}
                         >
-                            <Meta title={item.foodName} description='https://thebelgianwaffle.co' />
+                            <div className='flex-display-card'>
+                                <div style={{ fontWeight: 'bold' }}>{item.foodName}</div>
+                                <div>₹{parseFloat(item.price).toFixed(2)}</div>
+                            </div>
+                            <div className='flex-display-card'>
+                                <div
+                                    style={{
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                    }}
+                                >
+                                    {item.foodRestaurant}
+                                </div>
+                                <div
+                                    style={{
+                                        borderRadius: '20%',
+                                        padding: '0px 5px',
+                                        color: 'white',
+                                        backgroundColor:
+                                            item.ratings >= 4 ? 'green' : item.ratings <= 2 ? 'red' : 'orange',
+                                        height: 'fit-content',
+                                    }}
+                                >
+                                    {parseFloat(item.ratings).toFixed(1)}
+                                </div>
+                            </div>
                         </Card>
                     )
                 })}

@@ -15,3 +15,8 @@
     margin-right: 30px !important;
     max-width: calc(100vw - 60px) !important;
 }
+.flex-display-card {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
