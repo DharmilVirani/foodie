@@ -1,13 +1,26 @@
-.suggested {
-    font-family: 'cursive';
-    font-size: 40px;
-    margin-left: -30px;
+.food-title {
+    font-family: Okra, Helvetica, sans-serif;
+    font-size: 34px;
+    margin-left: -15px;
     margin-bottom: 30px;
+    margin-top: 15px;
+}
+.slider-container {
+    background-color: rgb(248, 248, 248);
+}
+.slider {
+    height: 340px;
+    margin: 0 75px;
+    text-align: center;
+    /* background: #364d79; */
+}
+.slider-pizza {
+    height: 340px;
+    width: 100%;
+    background-image: url('https://img.freepik.com/free-photo/pizza-pizza-filled-with-tomatoes-salami-olives_140725-1200.jpg?w=1060&t=st=1694236480~exp=1694237080~hmac=c705fc4be7db87ac2c812a716d1f64f1564a74aced25f3e1a3bb8e06211bf18c');
 }
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    margin-bottom: 20px;
 }
 .container {
     margin: 0 !important;
