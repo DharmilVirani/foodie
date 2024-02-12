@@ -8,16 +8,12 @@ import Home from './Pages/Home/Home'
 import NotFound from './Pages/NotFound'
 import Navbar from './Components/Navbar/Navbar'
 import Login from './Pages/Login/Login'
-import Profile from './Pages/Navbar Components/Profile'
+import Profile from './Pages/Usermenu/Profile'
 
 import './Pages/Login/login.css'
 import './Components/Navbar/Navbar.css'
 import './Pages/Home/Home.css'
-import './Pages/Navbar Components/Profile.css'
-import Order from './Pages/Navbar Components/sidebar components/Order'
-// import Sidebar from './Pages/Navbar Components/sidebar components/Sidebar'
-// import Name from './Pages/Navbar Components/Name'
-import Address from './Pages/Navbar Components/sidebar components/Address'
+import './Pages/Usermenu/Profile/Profile.css'
 
 const store = configureStore()
 
@@ -31,11 +27,7 @@ function App() {
                         <Route exact path='/' component={Home} />
                         <Route exact path='/login' component={Login} />
                         <Route exact path='/signup' component={Signup} />
-                        <Route>
-                            <Route exact path='/profile' component={Profile} />
-                            <Route exact path='/profile/orders' component={Order} />
-                            <Route exact path='/profile/addresses' component={Address} />
-                        </Route>
+                        <Route exact path='/profile/:id' component={Profile} />
                         <Route exact path='*' component={() => <NotFound />} />
                     </Switch>
                 </BrowserRouter>

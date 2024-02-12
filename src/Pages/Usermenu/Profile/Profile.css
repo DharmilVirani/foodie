@@ -82,11 +82,14 @@
     font-weight: 600;
     font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
 }
+.sidebar:first-child {
+    padding-top: 30px;
+}
 .sidebar-item:hover {
     color: black;
     font-weight: 750;
 }
-.bg-color {
+.bg-white {
     background-color: #fff;
 }
 .order-container {

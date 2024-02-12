@@ -20,7 +20,7 @@ const Navbar = ({ history }) => {
                       label: 'Profile',
                       key: '4',
                       onClick: () => {
-                          history.push('/profile')
+                          history.push('/profile/orders')
                       },
                   },
                   {

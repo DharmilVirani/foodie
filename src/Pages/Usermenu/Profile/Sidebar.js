@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import '../Profile.css'
 
 export default function Sidebar() {
     const [selected, setSelected] = useState(window.location.pathname)
@@ -32,7 +31,7 @@ export default function Sidebar() {
                 return (
                     <Link
                         to={item.url}
-                        className={`sidebar-item ${selected === item.url ? 'bg-color' : ''}`}
+                        className={`sidebar-item ${selected === item.url ? 'bg-white' : ''}`}
                         onClick={() => handleClick(item.url)}
                     >
                         {item.name}
