@@ -1,5 +1,5 @@
 .navbar-container {
-    background-color: #2a86b9;
+    background-color: #37718e;
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -13,14 +13,19 @@
 
 .navbar-title {
     margin-right: 100px;
-    margin-left: 20px;
+    margin-left: 50px;
     color: white;
     font-weight: 700;
     font-size: 35px;
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 730px) {
     .navbar-left .ant-input-group-wrapper {
         display: none;
     }
+}
+.list-icon {
+    color: white;
+    font-size: 25px;
 }

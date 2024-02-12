@@ -1,0 +1,155 @@
+.name-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #edf1f7;
+}
+.name {
+    height: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 25px;
+    padding: 20px;
+    padding-left: 100px;
+}
+.username {
+    font-size: 15px;
+    color: #37718e;
+}
+.username:first-child {
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+.edit {
+    height: inherit;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    padding-right: 100px;
+    margin-top: 25px;
+}
+.edit-profile {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #37718e;
+    color: white;
+    border: none;
+}
+.edit-profile:hover {
+    background-color: #ededed;
+    border: 1px solid #37718e;
+    color: #37718e;
+}
+.profile-body {
+    display: flex;
+    margin-top: 50px;
+}
+.sidebar {
+    background-color: #edf1f7;
+    min-width: 260px;
+    height: 618px;
+    margin-left: 40px;
+    position: sticky;
+}
+.main {
+    margin-left: 40px;
+}
+.main-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #282c3f;
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+    margin-bottom: 25px;
+}
+.sidebar div {
+    padding: 20px 0px;
+}
+.sidebar-item {
+    text-decoration: none;
+    padding: 30px 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    font-size: 16px;
+    color: #535665;
+    font-weight: 600;
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+}
+.sidebar-item:hover {
+    color: black;
+    font-weight: 750;
+}
+.bg-color {
+    background-color: #fff;
+}
+.order-container {
+    border: 0.5px solid #535665;
+    width: 900px;
+    padding: 20px;
+    margin: 30px auto;
+}
+.order-name {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #535665;
+}
+.food-name,
+.delivery-date {
+    opacity: 0.7;
+}
+.food-img {
+    width: 95px;
+    height: 90px;
+}
+.order-details,
+.total-paid {
+    padding-top: 25px;
+}
+.order-detail,
+.total-paid {
+    opacity: 0.7;
+    margin-left: 20px;
+}
+.order-btn {
+    height: 35px;
+    width: 125px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #37718e;
+    color: #37718e;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+.order-btn:hover {
+    box-shadow: 0px 0px 3px 3px #ededed;
+}
+.order-details-container {
+    display: flex;
+    justify-content: space-between;
+}
+.more-orders {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #d4d5d9;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3d4152;
+    width: 900px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.more-orders:hover {
+    box-shadow: 0px 0px 5px 5px #ededed;
+}

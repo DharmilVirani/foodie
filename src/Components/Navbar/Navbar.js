@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { Dropdown } from 'antd'
 
@@ -18,7 +19,9 @@ const Navbar = ({ history }) => {
                   {
                       label: 'Profile',
                       key: '4',
-                      onClick: () => {},
+                      onClick: () => {
+                          history.push('/profile')
+                      },
                   },
                   {
                       // TODO: other page -> home baki cart
@@ -69,13 +72,16 @@ const Navbar = ({ history }) => {
         <>
             <div className='navbar-container'>
                 <div className='navbar-left'>
-                    <div className='navbar-title'>{title}</div>
+                    <Link to='/' className='navbar-title'>
+                        {title}
+                    </Link>
                     <InputField
+                        className='searchBar'
                         placeholder='Search for Food, Cuisine and Restaurants.....'
-                        onSearch={(e) => console.log(e)}
                         style={{
                             width: 500,
                         }}
+                        onSearch={(e) => console.log(e)}
                         type='search'
                     />
                 </div>
@@ -85,7 +91,7 @@ const Navbar = ({ history }) => {
                     }}
                     trigger={['click']}
                 >
-                    <UnorderedListOutlined style={{ color: 'white' }} />
+                    <UnorderedListOutlined className='list-icon' />
                 </Dropdown>
             </div>
         </>

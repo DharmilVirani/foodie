@@ -24,12 +24,8 @@ const Home = () => {
 
     const CarouselImg = [
         {
-            link: 'https://static.parentlane.com/contents/media/images/Kerala%20Parotha.jpg',
-            name: 'Paratha',
-        },
-        {
-            link: 'https://static.parentlane.com/contents/media/images/Kerala%20Parotha.jpg',
-            name: 'Paratha',
+            link: 'https://img.freepik.com/free-photo/pizza-pizza-filled-with-tomatoes-salami-olives_140725-1200.jpg?w=1060&t=st=1694236480~exp=1694237080~hmac=c705fc4be7db87ac2c812a716d1f64f1564a74aced25f3e1a3bb8e06211bf18c',
+            name: 'Pizza',
         },
         {
             link: 'https://static.parentlane.com/contents/media/images/Kerala%20Parotha.jpg',
@@ -39,30 +35,19 @@ const Home = () => {
 
     return (
         <div className='container'>
-            <div className='food-title'>Varieties of Food we can provide</div>
             <div className='slider-container'>
+                <h3 className='food-title'>Varieties of Food we can provide</h3>
                 <Carousel autoplay>
                     {CarouselImg.map((item) => (
                         <div>
                             <div className='slider'>
-                                <div id='slider-pizza'>
-                                    <img
-                                        src={item.link}
-                                        alt={item.name}
-                                        style={{
-                                            opacity: 0.8,
-                                            border: '2px solid black',
-                                            height: '340px',
-                                            width: '100%',
-                                        }}
-                                    />
-                                </div>
+                                <img className='slider-img' src={item.link} alt={item.name} />
                             </div>
                         </div>
                     ))}
                 </Carousel>
             </div>
-            <div className='food-title'>Best Food in the City</div>
+            <h3 className='food-title'>Best Food in the City</h3>
             <div className='card-container'>
                 <Row gutter={[16, 16]}>
                     {data.map((item, index) => {
@@ -72,7 +57,12 @@ const Home = () => {
                                     key={index}
                                     hoverable
                                     cover={
-                                        <img alt='example' src={item.url} style={{ width: '100%', height: '250px' }} />
+                                        <img
+                                            className='card-image'
+                                            alt='example'
+                                            src={item.url}
+                                            style={{ width: '100%', height: '250px' }}
+                                        />
                                     }
                                 >
                                     <div className='flex-display-card'>
