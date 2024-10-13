@@ -1,68 +1,14 @@
 import React from 'react'
-import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
-import { UnorderedListOutlined } from '@ant-design/icons'
-import { Dropdown } from 'antd'
-
+import { NavLink, useLocation } from 'react-router-dom'
 import InputField from '../InputField'
 import { isUserLoggedIn } from '../../util'
 
-const Navbar = ({ history }) => {
-    const route = history?.location?.pathname || window.location.pathname
+const Navbar = () => {
+    const location = useLocation() // Use useLocation to access the current route
+    const route = location.pathname
     const noNavPage = ['/signup', '/login']
 
     const isLoggedIn = isUserLoggedIn()
-
-    const items = (
-        isLoggedIn
-            ? [
-                  {
-                      label: 'Profile',
-                      key: '4',
-                      onClick: () => {
-                          history.push('/profile/orders')
-                      },
-                  },
-                  {
-                      // TODO: other page -> home baki cart
-                      label: 'Cart/Home',
-                      key: '3',
-                      onClick: () => {},
-                  },
-                  {
-                      label: 'Settings',
-                      key: '2',
-                      onClick: () => {},
-                  },
-                  {
-                      label: 'Logout',
-                      key: '1',
-                      onClick: () => {
-                          localStorage.removeItem('token')
-                          history.push('/login')
-                      },
-                  },
-              ]
-            : [
-                  {
-                      label: 'Login',
-                      key: '0',
-                      onClick: () => {
-                          history.push('/login')
-                      },
-                  },
-                  {
-                      label: 'Sign Up',
-                      key: '1',
-                      onClick: () => {
-                          history.push('/signup')
-                      },
-                  },
-              ]
-    ).map((item) => ({
-        ...item,
-        label: <div onClick={item.onClick}>{item.label}</div>,
-    }))
 
     if (noNavPage.includes(route)) return null
 
@@ -72,9 +18,9 @@ const Navbar = ({ history }) => {
         <>
             <div className='navbar-container'>
                 <div className='navbar-left'>
-                    <Link to='/' className='navbar-title'>
+                    <NavLink to='/' className='navbar-title'>
                         {title}
-                    </Link>
+                    </NavLink>
                     <InputField
                         className='searchBar'
                         placeholder='Search for Food, Cuisine and Restaurants.....'
@@ -85,17 +31,31 @@ const Navbar = ({ history }) => {
                         type='search'
                     />
                 </div>
-                <Dropdown
-                    menu={{
-                        items,
-                    }}
-                    trigger={['click']}
-                >
-                    <UnorderedListOutlined className='list-icon' />
-                </Dropdown>
+                <div className='navbar-right'>
+                    <div className='cart-icon'>
+                        {isLoggedIn ? (
+                            <NavLink to='/cart' className='cart-logo'>
+                                CART
+                            </NavLink>
+                        ) : (
+                            <NavLink to='/login' className='cart-logo'>
+                                LOGIN
+                            </NavLink>
+                        )}
+                        {isLoggedIn ? (
+                            <NavLink to='/profile/orders' className='cart-logo'>
+                                PROFILE
+                            </NavLink>
+                        ) : (
+                            <NavLink to='/signup' className='cart-logo'>
+                                SIGNUP
+                            </NavLink>
+                        )}
+                    </div>
+                </div>
             </div>
         </>
     )
 }
 
-export default withRouter(Navbar)
+export default Navbar

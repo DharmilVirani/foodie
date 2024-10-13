@@ -1,0 +1,14 @@
+.notfound-container {
+    margin: auto;
+    text-align: center;
+}
+
+.notfound-statuscode {
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.notfound-message {
+    font-weight: 450px;
+    font-size: 20px;
+}

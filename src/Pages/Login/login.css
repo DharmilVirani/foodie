@@ -23,6 +23,10 @@
     margin-bottom: 5px;
 }
 
+.login-button {
+    color: white;
+}
+
 .login-card-field a {
     color: #357aff;
     text-decoration: none;

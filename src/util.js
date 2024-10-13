@@ -1,6 +1,7 @@
 export const isUserLoggedIn = () => {
     const token = localStorage.getItem('token')
     let isLoggedIn = false
-    if (token && JSON.parse(token)) isLoggedIn = true
+    // Check if the token exists and is a non-empty string
+    if (token) isLoggedIn = true
     return isLoggedIn
 }

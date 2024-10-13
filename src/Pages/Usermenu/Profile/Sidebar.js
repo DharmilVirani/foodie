@@ -23,6 +23,10 @@ export default function Sidebar() {
             url: '/profile/addresses',
             name: 'Addresses',
         },
+        {
+            url: '/profile/settings',
+            name: 'Settings',
+        },
     ]
 
     return (

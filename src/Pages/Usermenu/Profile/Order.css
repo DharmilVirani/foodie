@@ -1,0 +1,64 @@
+.order-container {
+    border: 0.5px solid #535665;
+    width: 900px;
+    padding: 20px;
+    margin: 30px auto;
+}
+.order-name {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #535665;
+}
+.food-name,
+.delivery-date {
+    opacity: 0.7;
+}
+.food-img {
+    width: 95px;
+    height: 90px;
+}
+.order-details,
+.total-paid {
+    padding-top: 25px;
+}
+.order-detail,
+.total-paid {
+    opacity: 0.7;
+    margin-left: 20px;
+}
+.order-btn {
+    height: 35px;
+    width: 125px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #37718e;
+    color: #37718e;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+.order-btn:hover {
+    box-shadow: 0px 0px 3px 3px #ededed;
+}
+.order-details-container {
+    display: flex;
+    justify-content: space-between;
+}
+.more-orders {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #d4d5d9;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3d4152;
+    width: 900px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.more-orders:hover {
+    box-shadow: 0px 0px 5px 5px #ededed;
+}

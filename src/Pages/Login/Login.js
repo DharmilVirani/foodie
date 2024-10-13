@@ -1,11 +1,10 @@
 import { Button, Checkbox } from 'antd'
 import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
 import InputField from '../../Components/InputField'
 
 const Login = () => {
-    const history = useHistory()
+    const navigate = useNavigate() // useNavigate replaces useHistory
     const [input, setInput] = useState({
         username: '',
         password: '',
@@ -16,7 +15,7 @@ const Login = () => {
         password: '',
     })
 
-    const [rememberMe, setRememberMe] = useState(true)
+    const [rememberMe, setRememberMe] = useState(false)
 
     const myFunction = (e) => {
         setRememberMe(e.target.checked)
@@ -39,14 +38,44 @@ const Login = () => {
     useEffect(() => {
         let isAuth = localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))
         if (isAuth) {
-            history.push('/')
+            navigate('/') // Use navigate instead of history.push
         }
-    }, [history])
+    }, [navigate])
 
     useEffect(() => {
         const rem = localStorage.getItem('rememberMe')
         if (JSON.parse(rem)) setInput(JSON.parse(localStorage.getItem('user')))
     }, [])
+
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/existing', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(input),
+            })
+            const data = await response.json()
+            if (response.ok) {
+                // Login successful
+                console.log('Login successful:', data.message)
+                if (error.username || error.password) return
+
+                localStorage.setItem('token', true)
+                localStorage.setItem('user', JSON.stringify(input))
+                localStorage.setItem('rememberMe', rememberMe)
+
+                // Redirect to home page or perform any other action
+                navigate('/') // Use navigate instead of history.push
+            } else {
+                // Login failed
+                alert(`Login failed: ${data.message}`)
+            }
+        } catch (error) {
+            console.log(`Login error: ${error}`)
+        }
+    }
 
     return (
         <div className='login-card-container'>
@@ -81,17 +110,7 @@ const Login = () => {
                     </Checkbox>
                 </div>
                 <div className='login-card-field'>
-                    <Button
-                        style={{ width: '100%' }}
-                        onClick={() => {
-                            if (error.username || error.password) return
-                            localStorage.setItem('token', true)
-                            localStorage.setItem('user', JSON.stringify(input))
-                            localStorage.setItem('rememberMe', rememberMe)
-                            history.push('/')
-                        }}
-                        type='primary'
-                    >
+                    <Button className='login-button' style={{ width: '100%' }} onClick={handleLogin} type='primary'>
                         Login
                     </Button>
                 </div>

@@ -1,0 +1,33 @@
+.sidebar {
+    background-color: #edf1f7;
+    min-width: 260px;
+    height: 618px;
+    margin-left: 40px;
+    position: sticky;
+}
+
+.sidebar div {
+    padding: 20px 0px;
+}
+.sidebar-item {
+    text-decoration: none;
+    padding: 30px 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    font-size: 16px;
+    color: #535665;
+    font-weight: 600;
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+}
+.sidebar:first-child {
+    padding-top: 30px;
+}
+.sidebar-item:hover {
+    color: black;
+    font-weight: 750;
+}
+.bg-white {
+    background-color: #fff;
+}

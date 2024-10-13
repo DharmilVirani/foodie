@@ -1,10 +1,11 @@
 import React from 'react'
-import Sidebar from './Profile/Sidebar'
-import Name from './Name'
-import Order from './Profile/Order'
-import Favourites from './Profile/Favourites'
-import Payments from './Profile/Payments'
-import Address from './Profile/Address'
+import Sidebar from './Sidebar'
+import Name from '../Name'
+import Order from './Order'
+import Favourites from './Favourites'
+import Payments from './Payments'
+import Addresses from './Addresses'
+import Settings from './Settings'
 
 const Profile = () => {
     const selected = window.location.pathname.split('/').slice(-1)[0]
@@ -21,7 +22,9 @@ const Profile = () => {
                     ) : selected === 'payments' ? (
                         <Payments />
                     ) : selected === 'addresses' ? (
-                        <Address />
+                        <Addresses />
+                    ) : selected === 'settings' ? (
+                        <Settings />
                     ) : (
                         <></>
                     )}
