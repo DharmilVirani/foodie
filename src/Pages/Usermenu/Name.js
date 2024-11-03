@@ -56,7 +56,7 @@ const Name = () => {
                     )}
                 </div>
                 <div className='edit'>
-                    <button className='edit-profile' onClick={handleLogout}>
+                    <button className='logout-button' onClick={handleLogout}>
                         LOGOUT
                     </button>
                 </div>

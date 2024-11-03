@@ -1,47 +1,41 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
-export default function Sidebar() {
-    const [selected, setSelected] = useState(window.location.pathname)
-    const handleClick = (event) => {
-        setSelected(event)
-    }
+export default function Sidebar({ setSelectedPage, selectedPage }) {
     const menu = [
         {
-            url: '/profile/orders',
+            url: 'orders',
             name: 'Orders',
         },
         {
-            url: '/profile/favourites',
+            url: 'favourites',
             name: 'Favourites',
         },
         {
-            url: '/profile/payments',
+            url: 'payments',
             name: 'Payments',
         },
         {
-            url: '/profile/addresses',
+            url: 'addresses',
             name: 'Addresses',
         },
         {
-            url: '/profile/settings',
+            url: 'settings',
             name: 'Settings',
         },
     ]
 
     return (
         <div className='sidebar'>
-            {menu.map((item) => {
-                return (
-                    <Link
-                        to={item.url}
-                        className={`sidebar-item ${selected === item.url ? 'bg-white' : ''}`}
-                        onClick={() => handleClick(item.url)}
-                    >
-                        {item.name}
-                    </Link>
-                )
-            })}
+            {menu.map((item, index) => (
+                <div
+                    key={index}
+                    className={`sidebar-item ${selectedPage === item.url ? 'bg-white' : ''}`} // Highlight selected item
+                    onClick={() => setSelectedPage(item.url)} // Update the selected page
+                    style={{ cursor: 'pointer' }}
+                >
+                    {item.name}
+                </div>
+            ))}
         </div>
     )
 }

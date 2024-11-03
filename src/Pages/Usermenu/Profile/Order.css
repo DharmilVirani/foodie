@@ -1,3 +1,8 @@
+:root {
+    --bottlegreen: #37718e;
+    --shadow: #ededed;
+}
+
 .order-container {
     border: 0.5px solid #535665;
     width: 900px;
@@ -32,14 +37,14 @@
     width: 125px;
     font-size: 16px;
     background-color: white;
-    border: 1px solid #37718e;
-    color: #37718e;
+    border: 1px solid var(--bottlegreen);
+    color: var(--bottlegreen);
     margin-left: 20px;
     margin-top: 20px;
     font-weight: 500;
 }
 .order-btn:hover {
-    box-shadow: 0px 0px 3px 3px #ededed;
+    box-shadow: 0px 0px 3px 3px var(--shadow);
 }
 .order-details-container {
     display: flex;
@@ -60,5 +65,5 @@
     margin-bottom: 30px;
 }
 .more-orders:hover {
-    box-shadow: 0px 0px 5px 5px #ededed;
+    box-shadow: 0px 0px 5px 5px var(--shadow);
 }

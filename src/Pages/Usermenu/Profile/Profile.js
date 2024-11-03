@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './Sidebar'
 import Name from '../Name'
 import Order from './Order'
@@ -6,27 +6,29 @@ import Favourites from './Favourites'
 import Payments from './Payments'
 import Addresses from './Addresses'
 import Settings from './Settings'
+import './Sidebar.css'
 
 const Profile = () => {
-    const selected = window.location.pathname.split('/').slice(-1)[0]
+    const [selectedPage, setSelectedPage] = useState('orders') // Default to 'orders'
+
     return (
         <div className='profile-container'>
             <Name />
             <div className='profile-body'>
-                <Sidebar />
+                <Sidebar setSelectedPage={setSelectedPage} selectedPage={selectedPage} />{' '}
                 <div className='main'>
-                    {selected === 'orders' ? (
+                    {selectedPage === 'orders' ? (
                         <Order />
-                    ) : selected === 'favourites' ? (
+                    ) : selectedPage === 'favourites' ? (
                         <Favourites />
-                    ) : selected === 'payments' ? (
+                    ) : selectedPage === 'payments' ? (
                         <Payments />
-                    ) : selected === 'addresses' ? (
+                    ) : selectedPage === 'addresses' ? (
                         <Addresses />
-                    ) : selected === 'settings' ? (
+                    ) : selectedPage === 'settings' ? (
                         <Settings />
                     ) : (
-                        <></>
+                        <Order />
                     )}
                 </div>
             </div>

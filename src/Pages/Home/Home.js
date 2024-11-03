@@ -7,6 +7,14 @@ const Home = ({ addToCart }) => {
     const [foodTables, setFoodTables] = useState([])
     const [restaurants, setRestaurants] = useState([])
 
+    const addItemToCart = (item) => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []
+        const updatedCartItems = [...cartItems, item]
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
+
+        addToCart(item)
+    }
+
     // Fetch all data from the backend API
     const getData = async () => {
         try {
@@ -27,8 +35,8 @@ const Home = ({ addToCart }) => {
 
             // Merge the data
             const newData = foodTablesData.map((item) => {
-                const dish = foodDishesData.find((dish) => dish.id === item.foodId)
-                const restaurant = restaurantsData.find((restaurant) => restaurant.id === item.restaurantId)
+                const dish = foodDishesData.find((dish) => dish.customId === item.foodId)
+                const restaurant = restaurantsData.find((restaurant) => restaurant.customId === item.restaurantId)
 
                 return {
                     ...item,
@@ -48,30 +56,21 @@ const Home = ({ addToCart }) => {
         getData()
     }, [])
 
-    const carouselImages = [
-        {
-            link: 'https://img.freepik.com/free-photo/pizza-pizza-filled-with-tomatoes-salami-olives_140725-1200.jpg?w=1060&t=st=1694236480~exp=1694237080~hmac=c705fc4be7db87ac2c812a716d1f64f1564a74aced25f3e1a3bb8e06211bf18c',
-            name: 'Pizza',
-        },
-        {
-            link: 'https://static.parentlane.com/contents/media/images/Kerala%20Parotha.jpg',
-            name: 'Paratha',
-        },
-    ]
-
     return (
         <div className='home-container'>
-            <div className='slider-container'>
-                <h3 className='food-title-main'>Varieties of Food We Can Provide</h3>
-                <Carousel autoplay>
-                    {carouselImages.map((item, index) => (
-                        <div key={index}>
-                            <div className='slider'>
-                                <img className='slider-img' src={item.link} alt={item.name} />
+            <div className='slider-main-container'>
+                <h3 className='food-title food-main-title'>Varieties of Food We Can Provide</h3>
+                <div className='slider-main-container'>
+                    <Carousel className='custom-carousel' arrows autoplay draggable={true}>
+                        {data.map((item, index) => (
+                            <div key={index}>
+                                <div className='slider'>
+                                    <img className='slider-img' src={item.url} alt={item.name} />
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </Carousel>
+                        ))}
+                    </Carousel>
+                </div>
             </div>
             <h3 className='food-title'>Best Food in the City</h3>
             <div className='card-container'>
@@ -127,19 +126,19 @@ const Home = ({ addToCart }) => {
                                 </div>
                                 <div className='buttons'>
                                     <button
-                                        className='button'
-                                        type='button' // Prevent the button from being treated as a submit button
+                                        className='home-button button'
+                                        type='button'
                                         onClick={(e) => {
-                                            e.preventDefault() // Prevent default behavior
-                                            addToCart(item)
+                                            e.preventDefault()
+                                            addItemToCart(item)
                                         }}
                                     >
                                         ADD TO CART
                                     </button>
                                     <button
-                                        className='button'
-                                        type='button' // Ensure it does not submit or reload the page
-                                        onClick={(e) => e.preventDefault()} // Prevent default behavior
+                                        className='home-button button'
+                                        type='button'
+                                        onClick={(e) => e.preventDefault()}
                                     >
                                         FAVOURITES
                                     </button>

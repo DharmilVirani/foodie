@@ -109,6 +109,7 @@ app.get('/api/fooddishes', async (req, res) => {
     }
 })
 
+// Fetch all food tables
 app.get('/api/foodtables', async (req, res) => {
     try {
         const foodTables = await FoodTable.find()
@@ -126,6 +127,17 @@ app.get('/api/restaurants', async (req, res) => {
         res.json(restaurants)
     } catch (error) {
         console.error('Error fetching restaurants:', error)
+        res.status(500).json({ message: 'Server error' })
+    }
+})
+
+// Fetch all cities
+app.get('/api/cities', async (req, res) => {
+    try {
+        const cities = await Cities.find()
+        res.json(cities)
+    } catch (error) {
+        console.error('Error fetching cities:', error)
         res.status(500).json({ message: 'Server error' })
     }
 })

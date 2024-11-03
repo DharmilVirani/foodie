@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import InputField from '../../Components/InputField'
 
 const Login = () => {
-    const navigate = useNavigate() // useNavigate replaces useHistory
+    const navigate = useNavigate()
     const [input, setInput] = useState({
         username: '',
         password: '',
@@ -38,7 +38,7 @@ const Login = () => {
     useEffect(() => {
         let isAuth = localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))
         if (isAuth) {
-            navigate('/') // Use navigate instead of history.push
+            navigate('/')
         }
     }, [navigate])
 
@@ -58,18 +58,16 @@ const Login = () => {
             })
             const data = await response.json()
             if (response.ok) {
-                // Login successful
-                console.log('Login successful:', data.message)
                 if (error.username || error.password) return
 
+                // Save token and username in localStorage
                 localStorage.setItem('token', true)
+                localStorage.setItem('username', input.username) // Save the logged-in username
                 localStorage.setItem('user', JSON.stringify(input))
                 localStorage.setItem('rememberMe', rememberMe)
 
-                // Redirect to home page or perform any other action
-                navigate('/') // Use navigate instead of history.push
+                navigate('/')
             } else {
-                // Login failed
                 alert(`Login failed: ${data.message}`)
             }
         } catch (error) {

@@ -54,7 +54,7 @@
     padding-right: 100px;
     margin-top: 25px;
 }
-.edit-profile {
+.logout-button {
     height: 40px;
     width: 140px;
     font-size: 18px;
@@ -63,7 +63,7 @@
     color: white;
     border: none;
 }
-.edit-profile:hover {
+.logout-button:hover {
     background-color: #edf1f7;
     border: 1px solid #37718e;
     color: #37718e;

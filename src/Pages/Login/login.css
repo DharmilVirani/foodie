@@ -1,3 +1,7 @@
+:root {
+    --lightblue: #357aff;
+}
+
 .login-card-container {
     width: 100vw;
     display: flex;
@@ -15,7 +19,7 @@
 .login-card-title {
     font-size: 40px;
     text-align: center;
-    color: #357aff;
+    color: var(--lightblue);
 }
 
 .login-card-field {
@@ -28,7 +32,7 @@
 }
 
 .login-card-field a {
-    color: #357aff;
+    color: var(--lightblue);
     text-decoration: none;
 }
 

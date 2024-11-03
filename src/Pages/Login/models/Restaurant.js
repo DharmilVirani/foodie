@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
 
-// models/Restaurant.js
 const restaurantSchema = new mongoose.Schema({
-    id: Number,
-    cityId: Number,
+    customId: String,
+    cityId: String,
     name: String,
-    foodId: Number,
 })
 
-const Restaurant = mongoose.model('restaurants', restaurantSchema)
+const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 module.exports = Restaurant

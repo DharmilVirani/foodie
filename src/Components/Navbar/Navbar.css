@@ -1,5 +1,9 @@
+:root {
+    --bottlegreen: #37718e;
+}
+
 .navbar-container {
-    background-color: #37718e;
+    background-color: var(--bottlegreen);
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -27,7 +31,7 @@
 
 .cart-logo {
     text-align: center;
-    background-color: #37718e;
+    background-color: var(--bottlegreen);
     border: none;
     color: white;
     font-size: 20px;
@@ -51,7 +55,6 @@
     width: 100px;
 }
 .navbar-title:hover {
-    opacity: 0.8;
     font-size: 35px;
 }
 .navbar-title.active {

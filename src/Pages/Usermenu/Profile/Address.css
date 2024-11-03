@@ -1,3 +1,8 @@
+:root {
+    --bottlegreen: #37718e;
+    --darkgreen: #004400;
+}
+
 .address-container {
     display: grid;
     grid-gap: 60px;
@@ -28,9 +33,10 @@
     border: none;
     padding: 5px;
     background-color: white;
-    color: #37718e;
+    color: var(--bottlegreen);
     font-weight: 600;
 }
+
 .butn:hover {
-    color: rgb(0, 69, 0);
+    color: var(--darkgreen);
 }

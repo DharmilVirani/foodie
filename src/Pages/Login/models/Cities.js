@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-// models/City.js
 const citySchema = new mongoose.Schema({
-    id: Number,
+    customId: String,
     name: String,
 })
 
-const City = mongoose.model('cities', citySchema)
+const City = mongoose.model('City', citySchema)
 module.exports = City
