@@ -73,18 +73,15 @@ body {
 .buttons {
     width: 100%;
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .home-button {
-    background-color: white !important;
-    color: var(--bottlegreen) !important;
-    border: 1px solid var(--bottlegreen) !important;
+    background-color: white;
+    color: var(--bottlegreen);
+    border: 1px solid var(--bottlegreen);
 }
 
 .home-button:hover {
-    color: white !important;
-    background-color: var(--bottlegreen) !important;
-    border: 1px solid var(--bottlegreen) !important;
+    color: white;
+    background-color: var(--bottlegreen);
 }

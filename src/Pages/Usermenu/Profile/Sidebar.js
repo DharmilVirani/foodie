@@ -6,10 +6,7 @@ export default function Sidebar({ setSelectedPage, selectedPage }) {
             url: 'orders',
             name: 'Orders',
         },
-        {
-            url: 'favourites',
-            name: 'Favourites',
-        },
+
         {
             url: 'payments',
             name: 'Payments',
@@ -29,8 +26,8 @@ export default function Sidebar({ setSelectedPage, selectedPage }) {
             {menu.map((item, index) => (
                 <div
                     key={index}
-                    className={`sidebar-item ${selectedPage === item.url ? 'bg-white' : ''}`} // Highlight selected item
-                    onClick={() => setSelectedPage(item.url)} // Update the selected page
+                    className={`sidebar-item ${selectedPage === item.url ? 'bg-white' : ''}`}
+                    onClick={() => setSelectedPage(item.url)}
                     style={{ cursor: 'pointer' }}
                 >
                     {item.name}

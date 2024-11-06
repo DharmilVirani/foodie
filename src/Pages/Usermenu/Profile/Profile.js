@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Sidebar from './Sidebar'
 import Name from '../Name'
 import Order from './Order'
-import Favourites from './Favourites'
 import Payments from './Payments'
 import Addresses from './Addresses'
 import Settings from './Settings'
@@ -19,8 +18,6 @@ const Profile = () => {
                 <div className='main'>
                     {selectedPage === 'orders' ? (
                         <Order />
-                    ) : selectedPage === 'favourites' ? (
-                        <Favourites />
                     ) : selectedPage === 'payments' ? (
                         <Payments />
                     ) : selectedPage === 'addresses' ? (

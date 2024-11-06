@@ -60,11 +60,14 @@ const Login = () => {
             if (response.ok) {
                 if (error.username || error.password) return
 
-                // Save token and username in localStorage
+                // Save token, username, and uniqueId in localStorage
                 localStorage.setItem('token', true)
                 localStorage.setItem('username', input.username) // Save the logged-in username
                 localStorage.setItem('user', JSON.stringify(input))
                 localStorage.setItem('rememberMe', rememberMe)
+
+                // Save uniqueId from the server response
+                localStorage.setItem('uniqueId', data.uniqueId) // Store uniqueId
 
                 navigate('/')
             } else {

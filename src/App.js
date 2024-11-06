@@ -38,24 +38,29 @@ function App() {
         }
     }, [cartItems])
 
-    const addToCart = (item) => {
-        const newItem = { ...item, customId: Date.now(), quantity: 1 } // Set default quantity to 1
+    const addToCart = (item, event) => {
+        if (event) {
+            event.preventDefault()
+        }
 
-        const existingItem = cartItems.find((cartItem) => cartItem.foodId === newItem.foodId)
+        // Create a new item with a customId based on the current timestamp and an initial quantity of 1
+        const newItem = { ...item, customId: Date.now(), quantity: 1 }
+
+        // Check for existing item based on uniqueId or customId instead of foodId
+        const existingItem = cartItems.find((cartItem) => cartItem.customId === newItem.customId)
+
         let updatedCartItems
         if (existingItem) {
-            updatedCartItems = cartItems.map((cartItem) =>
-                cartItem.foodId === newItem.foodId
-                    ? { ...cartItem, quantity: cartItem.quantity + 1 } // Increase quantity
-                    : cartItem
-            )
+            // If an item with the same uniqueId/customId exists, do nothing or alert the user
+            alert('This item is already in the cart.')
         } else {
+            // If the item is new (not in the cart), add it to the cart
             updatedCartItems = [...cartItems, newItem]
-        }
-        setCartItems(updatedCartItems)
-        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
+            setCartItems(updatedCartItems)
+            localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
 
-        alert('Item Added to Cart Successfully!!')
+            alert('Item Added to Cart Successfully!!')
+        }
     }
 
     const removeFromCart = (itemToRemove) => {

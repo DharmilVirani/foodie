@@ -1,14 +1,4 @@
 .button {
-    border: none;
     padding: 3px 7px;
     border-radius: 5px;
-    background-color: var(--bottlegreen);
-    color: white;
-    border: 1px solid var(--bottlegreen);
-}
-
-.button:hover {
-    background-color: white;
-    color: var(--bottlegreen);
-    border: 1px solid var(--bottlegreen);
 }

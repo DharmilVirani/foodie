@@ -127,18 +127,17 @@ body {
 }
 
 .clr-cart {
-    background-color: var(--red) !important;
-    color: white !important;
+    background-color: var(--red);
+    color: white;
     width: 150px;
     height: 50px;
     font-size: 18px;
-    border: 1px solid var(--red) !important;
+    border: 1px solid var(--red);
 }
 
 .clr-cart:hover {
-    color: var(--red) !important;
-    background-color: white !important;
-    border: 1px solid var(--red) !important;
+    color: var(--red);
+    background-color: white;
 }
 
 .place-order {
@@ -148,4 +147,9 @@ body {
     width: 150px;
     height: 50px;
     font-size: 18px;
+}
+
+.place-order:hover {
+    color: var(--bottlegreen);
+    background-color: white;
 }

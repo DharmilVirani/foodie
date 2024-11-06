@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const citySchema = new mongoose.Schema({
-    customId: String,
-    name: String,
+    name: { type: String, required: true },
+    customId: { type: Number, unique: true, index: true }, // Handle manually
 })
 
 const City = mongoose.model('City', citySchema)
+
 module.exports = City
