@@ -171,8 +171,8 @@ const Cart = ({ updateQuantity }) => {
                         </div>
                         <div className='line'></div>
                         <div className='lower-cart'>
-                            <button className='place-order button'>Place Order</button>
-                            <button className='clr-cart button' onClick={handleClearCart}>
+                            <button className='place-order button btn'>Place Order</button>
+                            <button className='clr-cart button btn' onClick={handleClearCart}>
                                 Clear Cart
                             </button>
                         </div>

@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     mobile: { type: Number, required: true, unique: true },
-    uniqueId: { type: Number, unique: true, index: true }, // No autoincrement, handle manually
+    uniqueId: { type: Number, unique: true, index: true },
 })
 
 const User = mongoose.model('User', userSchema)

@@ -4,6 +4,7 @@
 }
 .main {
     margin-left: 40px;
+    min-width: calc(100vw - 400px);
 }
 .main-title {
     font-size: 24px;

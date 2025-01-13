@@ -27,6 +27,7 @@
     margin-right: 0;
     transition: margin-right 0.3s ease;
 }
+
 .name {
     height: inherit;
     display: flex;
@@ -36,15 +37,18 @@
     padding: 20px;
     padding-left: 100px;
 }
+
 .username {
     font-size: 15px;
     color: #37718e;
 }
+
 .bold {
     font-size: 30px;
     font-weight: 600;
     padding-bottom: 5px;
 }
+
 .edit {
     height: inherit;
     display: flex;
@@ -54,6 +58,7 @@
     padding-right: 100px;
     margin-top: 25px;
 }
+
 .logout-button {
     height: 40px;
     width: 140px;
@@ -63,7 +68,9 @@
     color: white;
     border: none;
 }
-.logout-button:hover {
+
+.logout-button:hover,
+.logout-button:focus {
     background-color: #edf1f7;
     border: 1px solid #37718e;
     color: #37718e;

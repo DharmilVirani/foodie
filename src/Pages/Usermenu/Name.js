@@ -39,6 +39,7 @@ const Name = () => {
         const confirmation = window.confirm('Are you sure you want logout?')
         if (confirmation) {
             localStorage.removeItem('token')
+            localStorage.removeItem('uniqueId')
             navigate('/login')
         }
     }
@@ -58,7 +59,7 @@ const Name = () => {
                     )}
                 </div>
                 <div className='edit'>
-                    <button className='logout-button' onClick={handleLogout}>
+                    <button className='btn logout-button' onClick={handleLogout}>
                         LOGOUT
                     </button>
                 </div>

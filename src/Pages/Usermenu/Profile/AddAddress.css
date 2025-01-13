@@ -1,0 +1,122 @@
+:root {
+    --bottlegreen: #37718e;
+    --red: #a41e1e;
+}
+
+.address-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.address-form-subcontainer {
+    width: 60%;
+}
+
+.address-form-title {
+    margin-bottom: 5%;
+    color: var(--bottlegreen);
+    font-weight: 600;
+}
+
+.address-form-heading,
+.address-input,
+.address-city,
+.address-form-pincode {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.full-address-width {
+    width: 100%;
+}
+
+.address-city {
+    width: 50% !important;
+}
+
+.address-input {
+    height: 100px;
+    resize: none;
+}
+
+.address-type-choice {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield; /* For Firefox */
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.address-radiobutton-container {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.address-radiobutton-container h4 {
+    margin-right: 20px;
+}
+
+.address-radiobutton-container label {
+    margin: 0 10px;
+}
+
+.address-home,
+.address-work {
+    margin: 0 10px 0 20px;
+}
+
+.address-buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back {
+    background-color: var(--red);
+}
+
+.address-buttons-container button {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 30px;
+    color: white;
+}
+
+.address-submit-btn {
+    background-color: var(--bottlegreen);
+}
+
+.address-submit-btn:hover,
+.address-submit-btn:focus {
+    border: 1px solid var(--bottlegreen);
+    background-color: white;
+    color: var(--bottlegreen);
+}
+
+.back:hover,
+.back:focus {
+    border: 1px solid var(--red);
+    color: var(--red);
+    background-color: white;
+}

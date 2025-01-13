@@ -132,24 +132,26 @@ body {
     width: 150px;
     height: 50px;
     font-size: 18px;
-    border: 1px solid var(--red);
 }
 
-.clr-cart:hover {
+.clr-cart:hover,
+.clr-cart:focus {
     color: var(--red);
     background-color: white;
+    border: 1px solid var(--red);
 }
 
 .place-order {
     background-color: var(--bottlegreen);
     color: white;
-    border: 1px solid var(--bottlegreen);
     width: 150px;
     height: 50px;
     font-size: 18px;
 }
 
-.place-order:hover {
+.place-order:hover,
+.place-order:focus {
     color: var(--bottlegreen);
     background-color: white;
+    border: 1px solid var(--bottlegreen);
 }

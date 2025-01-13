@@ -10,6 +10,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Login from './Pages/Login/Login'
 import Profile from './Pages/Usermenu/Profile/Profile'
 import Cart from './Pages/Usermenu/Profile/Cart'
+import AddAddress from './Pages/Usermenu/Profile/AddAddress'
 
 import './Pages/Login/Login.css'
 import './Components/Navbar/Navbar.css'
@@ -19,6 +20,7 @@ import './Pages/Usermenu/Profile/Profile.css'
 import './Pages/Usermenu/Profile/Order.css'
 import './Pages/Usermenu/Name.css'
 import './Pages/Usermenu/Profile/Cart.css'
+import './Pages/Usermenu/Profile/Address.css'
 
 const store = configureStore()
 
@@ -99,6 +101,7 @@ function App() {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/profile/:id' element={<Profile />} />
                 <Route path='/cart' element={<CartWrapper />} />
+                <Route path='/addNewAddress' element={<AddAddress />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </Provider>

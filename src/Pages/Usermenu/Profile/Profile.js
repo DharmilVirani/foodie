@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Name from '../Name'
 import Order from './Order'
 import Payments from './Payments'
-import Addresses from './Addresses'
+import Address from './Address'
 import Settings from './Settings'
+
 import './Sidebar.css'
 
 const Profile = () => {
-    const [selectedPage, setSelectedPage] = useState('orders') // Default to 'orders'
+    const location = useLocation()
+    const currentPage = location.pathname.split('/').pop() || 'orders' // Default to 'orders'
 
     return (
         <div className='profile-container'>
             <Name />
             <div className='profile-body'>
-                <Sidebar setSelectedPage={setSelectedPage} selectedPage={selectedPage} />{' '}
+                <Sidebar selectedPage={currentPage} />
                 <div className='main'>
-                    {selectedPage === 'orders' ? (
+                    {currentPage === 'orders' ? (
                         <Order />
-                    ) : selectedPage === 'payments' ? (
+                    ) : currentPage === 'payments' ? (
                         <Payments />
-                    ) : selectedPage === 'addresses' ? (
-                        <Addresses />
-                    ) : selectedPage === 'settings' ? (
+                    ) : currentPage === 'addresses' ? (
+                        <Address />
+                    ) : currentPage === 'settings' ? (
                         <Settings />
                     ) : (
                         <Order />

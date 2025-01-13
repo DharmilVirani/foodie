@@ -1,22 +1,23 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import './Sidebar.css' // Ensure this contains your styles
 
-export default function Sidebar({ setSelectedPage, selectedPage }) {
+const Sidebar = () => {
     const menu = [
         {
-            url: 'orders',
+            url: '/profile/orders',
             name: 'Orders',
         },
-
         {
-            url: 'payments',
+            url: '/profile/payments',
             name: 'Payments',
         },
         {
-            url: 'addresses',
+            url: '/profile/addresses',
             name: 'Addresses',
         },
         {
-            url: 'settings',
+            url: '/profile/settings',
             name: 'Settings',
         },
     ]
@@ -24,15 +25,17 @@ export default function Sidebar({ setSelectedPage, selectedPage }) {
     return (
         <div className='sidebar'>
             {menu.map((item, index) => (
-                <div
+                <NavLink
                     key={index}
-                    className={`sidebar-item ${selectedPage === item.url ? 'bg-white' : ''}`}
-                    onClick={() => setSelectedPage(item.url)}
-                    style={{ cursor: 'pointer' }}
+                    to={item.url}
+                    className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+                    style={{ textDecoration: 'none' }}
                 >
                     {item.name}
-                </div>
+                </NavLink>
             ))}
         </div>
     )
 }
+
+export default Sidebar

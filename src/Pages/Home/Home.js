@@ -10,6 +10,12 @@ const Home = () => {
 
     // Add item to cart by sending a POST request to the backend
     const addItemToCart = async (item) => {
+        console.log(userId)
+        if (!userId) {
+            alert('Please Login to add item to Cart.')
+            window.location.href = '/login'
+            return
+        }
         const cartItem = {
             userId,
             foodId: item.foodId,
@@ -149,7 +155,7 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <button
-                                    className='home-button button buttons'
+                                    className='btn home-button button buttons'
                                     type='button'
                                     onClick={(e) => {
                                         e.preventDefault()

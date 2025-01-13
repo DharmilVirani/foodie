@@ -8,6 +8,7 @@ const FoodTable = require('./models/FoodTable')
 const Restaurant = require('./models/Restaurant')
 const Cities = require('./models/Cities')
 const CartItem = require('./models/CartItem')
+const Address = require('./models/AddressSchema')
 
 const app = express()
 const PORT = 5000
@@ -153,10 +154,20 @@ app.post('/cart/add', async (req, res) => {
     const { userId, foodId, restaurantId, quantity, price, foodName, foodRestaurant, url } = req.body
 
     try {
-        // Find the last CartItem globally (for any user)
-        const lastItem = await CartItem.findOne().sort({ uniqueId: -1 })
+        const existingItem = await CartItem.findOne({ userId, foodId, restaurantId })
 
-        // If no items exist, start with uniqueId = 1; otherwise, increment the last uniqueId
+        if (existingItem) {
+            existingItem.quantity += quantity
+            await existingItem.save()
+
+            return res.status(200).json({
+                success: true,
+                message: 'Item quantity updated in cart',
+                cartItem: existingItem,
+            })
+        }
+
+        const lastItem = await CartItem.findOne().sort({ uniqueId: -1 })
         const newUniqueId = lastItem ? lastItem.uniqueId + 1 : 1
 
         const newCartItem = new CartItem({
@@ -205,14 +216,12 @@ app.delete('/cart/delete/:userId/:uniqueId', async (req, res) => {
     const { userId, uniqueId } = req.params
 
     try {
-        // Find and delete the cart item by userId and uniqueId
         const deletedItem = await CartItem.findOneAndDelete({ userId, uniqueId })
 
         if (!deletedItem) {
             return res.status(404).json({ success: false, message: 'Cart item not found' })
         }
 
-        // After deletion, decrement all items globally where the uniqueId is greater than the deleted one
         await CartItem.updateMany({ uniqueId: { $gt: uniqueId } }, { $inc: { uniqueId: -1 } })
 
         res.status(200).json({
@@ -267,6 +276,111 @@ app.put('/cart/update/:uniqueId', async (req, res) => {
     } catch (error) {
         console.error('Error updating cart item:', error)
         res.status(500).json({ success: false, message: 'Server error' })
+    }
+})
+
+app.get('/get-addresses', async (req, res) => {
+    try {
+        const { userId } = req.query // Use query parameter for userId
+
+        if (!userId) {
+            return res.status(400).json({ error: 'User ID is required' })
+        }
+
+        // Fetch only addresses that belong to the specified user
+        const addresses = await Address.find({ userId })
+
+        res.status(200).json({ addresses })
+    } catch (error) {
+        console.error('Error fetching addresses:', error)
+        res.status(500).json({ error: 'Internal server error' })
+    }
+})
+
+app.post('/add-address', async (req, res) => {
+    try {
+        const { userId, addressType, addressName, address, city, pincode } = req.body
+
+        if (!userId || !addressType || !addressName || !address || !city || !pincode) {
+            return res.status(400).json({ error: 'All fields are required' })
+        }
+
+        // Find the last address for the user and calculate uniqueId
+        const lastAddress = await Address.findOne({ userId }).sort({ uniqueId: -1 })
+        const uniqueId = lastAddress ? lastAddress.uniqueId + 1 : 1
+
+        const newAddress = new Address({
+            userId,
+            addressType,
+            addressName,
+            address,
+            city,
+            uniqueId,
+            pincode,
+        })
+
+        await newAddress.save()
+
+        res.status(201).json({ message: 'Address added successfully', address: newAddress })
+    } catch (error) {
+        console.error('Error adding address:', error)
+        res.status(500).json({ error: 'Internal server error' })
+    }
+})
+
+app.delete('/delete-address', async (req, res) => {
+    try {
+        const { userId, uniqueId } = req.body
+
+        if (!userId || !uniqueId) {
+            return res.status(400).json({ error: 'User ID and Unique ID are required' })
+        }
+
+        // Find the address by userId and uniqueId
+        const addressToDelete = await Address.findOne({ userId, uniqueId })
+
+        if (!addressToDelete) {
+            return res.status(404).json({ error: 'Address not found for this user' })
+        }
+
+        await Address.findByIdAndDelete(addressToDelete._id)
+
+        // Optionally, update the uniqueIds for the remaining addresses
+        await Address.updateMany({ userId, uniqueId: { $gt: uniqueId } }, { $inc: { uniqueId: -1 } })
+
+        res.status(200).json({ message: 'Address deleted successfully' })
+    } catch (error) {
+        console.error('Error deleting address:', error)
+        res.status(500).json({ error: 'Internal server error' })
+    }
+})
+
+app.put('/update-address', async (req, res) => {
+    try {
+        const { userId, uniqueId, addressType, addressName, address, city, pincode } = req.body
+
+        // Check if all required fields are provided
+        if (!userId || !uniqueId || !addressType || !addressName || !address || !city || !pincode) {
+            return res.status(400).json({ error: 'All fields are required' })
+        }
+
+        const addressToUpdate = await Address.findOne({ userId, uniqueId })
+
+        if (!addressToUpdate) {
+            return res.status(404).json({ error: 'Address not found' })
+        }
+
+        addressToUpdate.addressType = addressType
+        addressToUpdate.addressName = addressName
+        addressToUpdate.address = address
+        addressToUpdate.city = city
+        addressToUpdate.pincode = pincode
+
+        await addressToUpdate.save()
+        res.status(200).json({ message: 'Address updated successfully', address: addressToUpdate })
+    } catch (error) {
+        console.error('Error updating address:', error)
+        res.status(500).json({ error: 'Internal server error' })
     }
 })
 
