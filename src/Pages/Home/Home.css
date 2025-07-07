@@ -1,0 +1,88 @@
+:root {
+    --bottlegreen: #37718e;
+    --lgrey1: #867e7e;
+}
+
+body {
+    font-family: Okra, Helvetica, sans-serif;
+}
+
+.home-container {
+    margin: auto;
+}
+
+.home-container > :not(.slider-container) {
+    padding: 0 30px;
+}
+
+.food-title {
+    font-size: 34px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.food-main-title {
+    margin-top: 0 !important;
+}
+
+.slider-main-container {
+    background-color: rgb(241, 239, 239);
+    padding-bottom: 40px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.slider {
+    margin: auto;
+    text-align: center;
+    height: 400px;
+    width: 60%;
+}
+
+.slider-img {
+    margin: auto;
+    border-radius: 50px;
+    height: 100%;
+    width: 100%;
+}
+
+.custom-carousel .slick-prev,
+.custom-carousel .slick-next {
+    color: black;
+    z-index: 1;
+    opacity: 1;
+}
+
+.custom-carousel .slick-prev:hover,
+.custom-carousel .slick-next:hover {
+    color: var(--lgrey1);
+}
+
+.card-container {
+    margin-bottom: 20px;
+}
+
+.flex-display-card {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.buttons {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.home-button {
+    background-color: white;
+    color: var(--bottlegreen);
+    border: 1px solid var(--bottlegreen);
+}
+
+.home-button:hover {
+    color: white;
+    background-color: var(--bottlegreen);
+    border: 1px solid var(--bottlegreen);
+}

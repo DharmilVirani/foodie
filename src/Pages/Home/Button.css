@@ -1,0 +1,13 @@
+:root {
+    --bottlegreen: #37718e;
+}
+
+.button {
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+
+.button:focus {
+    background-color: var(--bottlegreen);
+    color: white;
+}

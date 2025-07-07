@@ -1,0 +1,96 @@
+:root {
+    --bottlegreen: #37718e;
+    --red: #c62424;
+    --lightblue: #357aff;
+}
+
+.address-main-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 5% 0;
+    margin-bottom: 30%;
+}
+
+.address-container {
+    max-width: 96%;
+    border: 1px solid var(--bottlegreen);
+    border-radius: 5%;
+    padding: 20px 30px;
+    margin: 0 30px 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.address-heading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--bottlegreen);
+}
+
+.bottom-border {
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+}
+
+.top-border {
+    border-top: 1px solid black;
+    padding-top: 15px;
+}
+
+.address-margin {
+    margin-top: 15px;
+}
+
+.address-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 6em;
+    word-wrap: break-word;
+}
+
+.address-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.address-button {
+    border: none;
+    color: var(--bottlegreen);
+    background-color: white;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.address-button:hover {
+    transform: scale(1.08);
+}
+
+.address-button:focus {
+    outline: none;
+}
+
+.address-button:last-child {
+    color: var(--red);
+}
+
+.add-address-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+}
+
+.add-icon {
+    width: 100px;
+    height: 100px;
+}
